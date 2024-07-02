@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    
+  <form id="form" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <!--
+      INSTRUCCIONES PARA EL ALUMNO (ELIMINALO DESPUES DE LEERLO):
+      - Esta página es igual que la de "registrarme". -->
+      <div class="container">
+        <h1 class="titulo">Mis Datos</h1>
+
+        <form id="formulario-registro" class="formulario" novalidate>
+            <h2>Modifica tus datos</h2>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="rut" class="form-label">Rut</label>
+                        <input required type="text" class="form-control"
+                            id="rut" name="rut" aria-describedby="rutHelp"
+                            placeholder="RUT sin puntos y con guión">
+                        <div id="rutHelp" class="form-text"
+                            style="color:rgb(150, 150, 150)">Escriba su RUT
+                            sin puntos y con guión</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nombre"
+                            class="form-label">Nombres</label>
+                        <input required type="text" class="form-control"
+                            id="nombre" name="nombre" placeholder="Nombres">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="apellidos"
+                            class="form-label">Apellidos</label>
+                        <input required type="text" class="form-control"
+                            id="apellidos" name="apellidos"
+                            placeholder="Apellidos">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="correo" class="form-label">Email</label>
+                        <input required type="email" class="form-control"
+                            id="correo" name="correo" placeholder="Email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password"
+                            class="form-label">Contraseña</label>
+                        <input required type="password" class="form-control"
+                            id="password" name="password"
+                            aria-describedby="pwHelp"
+                            placeholder="Contraseña">
+                        <div id="pwHelp" class="form-text"
+                            style="color:rgb(150, 150, 150)">Contraseña
+                            entre 5 y 15 caracteres</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password2" class="form-label">Repetir
+                            contraseña</label>
+                        <input required type="password" class="form-control"
+                            id="password2" name="password2"
+                            placeholder="Repetir contraseña">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="direccion"
+                            class="form-label">Dirección</label>
+                        <textarea class="form-control" id="direccion"
+                            name="direccion" style="white-space: pre-line;"
+                            placeholder="Dirección particular"></textarea>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input"
+                            id="suscripcion">
+                        <label class="form-check-label"
+                            for="suscripcion">Quiero suscribirme y donar
+                            $30.000 para ser
+                            cliente premium y recibir un 5% de descuento en
+                            mis compras.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3 text-center">
+                        <label for="imagenPerfil" class="form-label">Sube tu
+                            foto de perfil aquí</label>
+                        <div style="margin-bottom: 10px;">
+                            <img id="imagenVistaPrevia"
+                                src="{% static 'core/img/anon_user.webp' %}"
+                                alt="Vista previa de la imagen"
+                                style="max-width: 100%; height: 250px; margin: 0 auto;">
+                        </div>
+                        <!-- AREA DE BOTON DE SELECCIONAR IMAGEN: Reemplaza el botón "Seleccionar archivo" por otro con Bootstrap (VER COMENTARIO "BOTON IMAGEN" en script.js) -->
+                        <button onclick="event.preventDefault(); document.getElementById('id_imagen').click();"> Seleccionar imagen </button>
+                    </div>
+                </div>
+
+                <div class="container"
+                    style="position: relative; width: 150px; height: 50px;">
+                    <button type="submit" class="btn btn-primary"
+                    style="position: absolute; bottom: 0;"> Actualizar mis datos </button>  
+                </div>
+                <div class="container"
+                    style="position: relative; width: 150px; height: 50px;">
+                    <button type="reset" class="btn btn-primary"
+                        style="position: absolute; bottom: 0;">Limpiar</button>
+                </div>
+            </div>
+        </form>
+    </div>   
+    
+  </form>
+
+{% endblock content %}
+
+{% block script %}
+  <script src="{% static 'core/js/misdatos.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,136 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+
+  <form id="form" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    
+    <div class="row">
+
+      <!-- AREA DE DATOS BASICOS: username, nombre, apellidos, correo y contraseñas -->
+      <div class="col-md-12">
+
+      {{form_usuario|as_bootstrap_form:'help_text_visible=False'}}
+
+      <div class="row g-3">
+        <div class="col-md-6">
+            
+
+            <div class="mb-3">
+                <label for="nombre"
+                    class="form-label">Nombres</label>
+                <input required type="text" class="form-control"
+                    id="nombre" name="nombre" placeholder="Nombres">
+            </div>
+
+            <div class="mb-3">
+                <label for="apellidos"
+                    class="form-label">Apellidos</label>
+                <input required type="text" class="form-control"
+                    id="apellidos" name="apellidos"
+                    placeholder="Apellidos">
+            </div>
+
+            <div class="mb-3">
+                <label for="correo" class="form-label">Email</label>
+                <input required type="email" class="form-control"
+                    id="correo" name="correo" placeholder="Email">
+            </div>
+
+            <div class="mb-3">
+                <label for="password1"
+                    class="form-label">Contraseña</label>
+                <input required type="password" class="form-control"
+                    id="password1" name="password1"
+                    aria-describedby="pwHelp"
+                    placeholder="Contraseña">
+                <div id="pwHelp" class="form-text"
+                    style="color:rgb(150, 150, 150)">Contraseña
+                    de más de 8 caracteres</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password2" class="form-label">Repetir
+                    contraseña</label>
+                <input required type="password" class="form-control"
+                    id="password2" name="password2"
+                    placeholder="Repetir contraseña">
+            </div>
+
+
+      </div>
+
+      <!-- AREA DE DATOS DE PERFIL: rut, dirección y subscrito (VER COMENTARIO "CHECKBOX SUBSCRITO" en script.js)  -->
+      <div class="col-sm-12 col-md-5">
+
+        {{form_perfil|as_bootstrap_form}}
+
+        <div class="mb-3">
+          <label for="rut" class="form-label">Rut</label>
+          <input required type="text" class="form-control"
+              id="rut" name="rut" aria-describedby="rutHelp"
+              placeholder="RUT sin puntos y con guión">
+          <div id="rutHelp" class="form-text"
+              style="color:rgb(150, 150, 150)">Escriba su RUT
+              sin puntos y con guión</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="direccion"
+            class="form-label">Dirección</label>
+        <textarea class="form-control" id="direccion"
+            name="direccion" style="white-space: pre-line;"
+            placeholder="Dirección particular"></textarea>
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input"
+          id="suscripcion">
+      <label class="form-check-label"
+          for="suscripcion">Quiero suscribirme y donar
+          $30.000 para ser
+          cliente premium y recibir un 5% de descuento en
+          mis compras.</label>
+  </div>
+
+      </div>
+
+      <!-- AREA DE IMAGEN DE PERFIL -->
+      <div class="col-sm-12 col-md-3 text-center">
+        <div class="row">
+          <!-- AREA DE CUADRO DE IMAGEN: Muestra la Imagen de perfil -->
+          <div class="col-sm-12" style="height: 220px">
+            <img id="cuadro-imagen" src="{% static 'core/img/sin-imagen.png' %}">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- AREA DE BOTONES -->
+    <div class="mt-2 mb-3 text-center">
+      
+      <button type="submit"> Registrarme </button>
+      
+      <!-- Boton para "Limpiar formulario" (VER COMENTARIO "BOTON LIMPIAR FORMULARIO" en script.js) -->
+      <button type="reset" id="limpiar_formulario"> Limpiar </button>
+      
+      <!-- AREA DE BOTON DE SELECCIONAR IMAGEN: Reemplaza el botón "Seleccionar archivo" por otro con Bootstrap (VER COMENTARIO "BOTON IMAGEN" en script.js) -->
+      <button onclick="event.preventDefault(); document.getElementById('id_imagen').click();"> Seleccionar imagen </button>  
+      
+      <!-- Botón para "Crear usuario de prueba" (VER COMENTARIO "CREAR USUARIO DE PRUEBA" en registrarme.js) -->
+      <button id="crear_usuario_prueba"> Crear usuario de prueba </button>
+
+    </div>
+
+  </form>
+  
+{% endblock content %}
+
+{% block script %}
+  <script src="{% static 'core/js/registrarme.js' %}"></script>
+{% endblock script %}

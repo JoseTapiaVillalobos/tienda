@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+  <!--
+  INSTRUCCIONES PARA EL ALUMNO (ELIMINALO DESPUES DE LEERLO):<br>
+  - Pagina para ingresar a la tienda <br>
+  - Pone aquí tu formulario <br>
+  - Si quieres puedes usar el formulario que se te entrega, pero debes cambiar su gráfica con la tuya <br>
+  - Si quieres mantener tu propio formulario, debes fijarte que tenga los "id" y "name" del formulario de Django <br>
+  - Por ejemplo, si tu campo se llama "username", debes usar los atributos <b>name="username"</b> y <b>id="id_username"</b> (Django le antepone "id_" al nombre del campo)
+  -->
+
+  
+  <div class="row justify-content-center">
+    <form id="containerLogin" method="POST" class="col-5 border border-3 p-4">
+
+      {% csrf_token %} 
+      
+      <!-- Botones -->
+      {{ form|as_bootstrap_form }}
+      
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary"> Ingresar </button>
+      </div>
+      
+    <!--</form>
+    <form id="formulario-ingresar">
+      {% csrf_token %}
+      <div class="container" id="containerLogin">
+          <h1 class="titulo">Ingresar</h1>
+          <br>
+          <div class="cuadro_login">
+              <div class="form-group row">
+                  <label for="cuenta" class="col-sm-4 col-form-label">Cuenta</label>
+                  <div class="col-sm-8">
+                      <input type="text" class="form-control" id="id_username" name="username">
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <label for="password" class="col-sm-4 col-form-label">Contraseña</label>
+                  <div class="col-sm-8">
+                      <input type="password" class="form-control" id="id_password" name="password">
+                  </div>
+              </div>
+              <div class="form-group row mx-auto">
+                  <div class="col col-md-12 text-center">
+                      <button type="submit" id="btnIngresar" name="btmIngresar" class="btn btn-primary">Ingresar</button>
+                  </div>
+              </div>
+    
+              <div class="col col-sm-4 text-center">
+                  <input type="checkbox" class="form-check-input" id="recordarme">
+                  <label class="form-check-label" for="recordarme">Recordarme</label>
+              </div>
+    
+              <div class="col-xl-12 mx-auto text-center">
+                  <button type="button" class="btn btn-link boton_contraseña">Olvidaste tu contraseña?</button>
+              </div>
+          </div>
+          <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-3 mx-auto text-center mt-3">
+              <a href="registro.html" class="btn btn-primary boton_registro">No tienes cuenta? Regístrate</a>
+          </div>
+      </div>
+      </form>
+  </div>-->
+
+  <!-- Combobox de usuarios (QUITAR EN VERSION DE PRODUCCION DEL SOFTWARE) -->
+  <!-- NO LO BORRES PARA QUE PUEDAS HACER TUS PRUEBAS MAS RAPIDAMENTE  -->
+  {% include 'common/combobox_usuarios.html' %}
+  
+{% endblock content %}
+
+{% block script %}
+  <script src="{% static 'core/js/ingresar.js' %}"></script>
+{% endblock script %}

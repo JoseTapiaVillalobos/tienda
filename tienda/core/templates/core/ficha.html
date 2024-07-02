@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+
+
+    <form method="post" id="formulario-ficha">
+
+        {% csrf_token %}
+
+        <div class="container-fluid">
+            <div class="card mx-auto">
+                <div class="card-content my-auto">
+                    <img src="{{ producto.imagen.url }}" class="card-img-top mx-auto d-block"
+                         alt="{{ producto.nombre }}"
+                         style="max-width: 100%; height: auto; margin-top: 10px;">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ nombre }}</h3>
+                        <p class="card-genre">
+                            <small>
+                                Género: {{item.bodega.producto.categoria.nombre}}
+                            </small>
+                        </p>
+                        <p class="card-text">
+                            {{ descripcion }}
+                        </p>
+                        <br>
+                        
+                            {{ html_estado|safe }}  <br>
+                            {{ html_precio|safe }}  <br>
+
+                        <br>
+                        {{ html_stock|safe }}
+                        <div class="col-md-6 card-buy d-flex justify-content-between">
+                            <div>
+                                <a href="registro.html" class="btn btn-primary">
+                                    Comprar
+                                </a>
+                            </div>
+                            <div>
+                                <a href="carrito.html" class="btn btn-primary">
+                                    Agregar al carrito
+                                </a>
+                            </div>
+                        </div>
+
+        <div>
+        
+    </form>
+
+{% endblock content %}
+
+{% block script %}
+    <script src="{% static 'core/js/ficha.js' %}"></script>
+{% endblock script %}

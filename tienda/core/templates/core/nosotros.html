@@ -1,0 +1,72 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+  
+<h1 class="titulo">Acerca de Nosotros</h1>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <br>
+                    <p class="lead">En <strong>SUPER GAMES</strong>, somos más
+                        que una tienda de videojuegos: somos una comunidad de
+                        entusiastas y expertos apasionados por el mundo del
+                        entretenimiento digital. Fundada en 2010, nuestra misión
+                        es proporcionar a nuestros clientes una selección
+                        inigualable de juegos, consolas y accesorios de la más
+                        alta calidad.</p>
+                    <br>
+                    <p class="lead">Creemos en el poder de los videojuegos para
+                        conectar a las personas, fomentar la creatividad y
+                        proporcionar escapismo y diversión sin igual. Desde los
+                        últimos lanzamientos hasta los clásicos atemporales, en
+                        SUPER GAMES te ofrecemos una experiencia de compra
+                        personalizada y consejos expertos.</p>
+                    <br>
+                    <p class="lead">Nuestro equipo está compuesto por jugadores
+                        veteranos y aficionados que entienden tus necesidades y
+                        comparten tu pasión. Visítanos en nuestra tienda o
+                        explora nuestro sitio web para descubrir, jugar y
+                        sumergirte en nuevas aventuras cada día.</p>
+                    <br>
+                    <br>
+                    <br>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="card mx-auto">
+                          <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 200px; overflow: hidden;">
+                            <img src="{% static 'core/img/gerente.jpg' %}" class="img-staff" alt="Foto del Gerente General">
+                          </div>
+                          <div class="card-body" id="card-staff">
+                            <h5 class="card-title">Gerente General</h5>
+                            <p class="card-text">Nombre: Ed Vanguard</p>
+                            <p class="card-text">Email: <a href="mailto:ed@vanguard.com">edvan@supergames.com</a></p>
+                            <p class="card-text">Teléfono: 123-321-3210</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="card mx-auto">
+                          <div class="card-img-top d-flex justify-content-center align-items-center" style="height: 200px; overflow: hidden;">
+                            <img src="{% static 'core/img/desarrollador.jpg' %}" class="img-staff" alt="Foto del Desarrollador">
+                          </div>
+                          <div class="card-body" id="card-staff">
+                            <h5 class="card-title">Desarrollador</h5>
+                            <p class="card-text">Nombre: Martin Sader</p>
+                            <p class="card-text">Email: <a href="mailto:vader@empire.com">msader@supergames.com</a></p>
+                            <p class="card-text">Teléfono: 987-654-3210</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    
+{% endblock content %}
